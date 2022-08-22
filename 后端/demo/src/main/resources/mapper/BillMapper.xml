@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.y2w.demo.mapper.BillMapper">
+
+    <resultMap id="BaseResultMap" type="com.y2w.demo.domain.Bill">
+        <id property="bid" column="bid" jdbcType="BIGINT"/>
+        <result property="bdate" column="bdate" jdbcType="TIMESTAMP"/>
+        <result property="type" column="type" jdbcType="VARCHAR"/>
+        <result property="amout" column="amout" jdbcType="INTEGER"/>
+        <result property="consumerid" column="consumerid" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        bid
+        ,bdate,type,
+        amout,consumerid
+    </sql>
+
+    <select id="selectMaps" resultType="map">
+        select b.bid, b.bdate, b.type, b.amout, m.name as name
+        from bill b
+                 join member m
+                      on b.consumerid = m.id
+
+        order by b.bdate desc
+    </select>
+
+    <select id="selectByBdateAndTypeMapPage" resultType="map">
+        select b.bid,b.bdate,b.type,b.amout,m.name as name,b.descr
+        from bill b
+        join member m
+        on b.consumerid=m.id
+        <where>
+            <if test="name != null and name !=''">
+                and name = #{name}
+            </if>
+            <if test="type != null and type !=''">
+                and b.type = #{type}
+            </if>
+
+            <if test="beginDate != null  and endDate != null ">
+                and b.bdate between #{beginDate} and #{endDate}
+            </if>
+        </where>
+        order by b.bdate desc
+    </select>
+
+    <select id="selectToCensusByMonth" resultType="map">
+        select year(b.bdate) as yy,month(b.bdate) as mm, sum(b.amout) as ms,m.name as name,b.type
+        from bill b
+        join member m
+        on b.consumerid=m.id
+        group by yy, mm, name,b.type
+        having yy=#{year} and mm=#{month}
+    </select>
+    <select id="selectToCensusByYear" resultType="map">
+        select year(b.bdate) as yy, sum(b.amout) as ms,m.name as name,b.type
+        from bill b
+        join member m
+        on b.consumerid=m.id
+        group by yy,name,b.type
+        having yy=#{year}
+    </select>
+
+    <select id="selectYears" resultType="string">
+        select year(bdate) yy
+        from bill
+        group by yy
+    </select>
+</mapper>
