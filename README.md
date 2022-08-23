@@ -120,3 +120,4 @@ systemctl status firewalld #查看防火墙状态
 <img src="C:\Users\DELL\AppData\Roaming\Typora\typora-user-images\image-20220823134106224.png" alt="image-20220823134106224" style="zoom:50%;" />
 
 **不足：** 无表单验证，没有超时处理，如果后端访问不到没有反馈。
+更新于2022/8/23 13:55
