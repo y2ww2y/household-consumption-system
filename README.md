@@ -12,7 +12,7 @@
 
 1. 这里是vscode下，<u>*Ctrl j*</u> 打开终端，运行<u>*npm install*</u>  下载依赖包，生成node_modules
 
-![image-20220823091107406](C:\Users\DELL\AppData\Roaming\Typora\typora-user-images\image-20220823091107406.png)
+![image-20220823091107406](static\image-20220823091107406.png)
 
 2. 需要在这里试运行把vue.config.js里的target改成自己要访问的后端地址，方便区分带有/api的都是后端路径，否则是前端vue路由。要更改后端对应的mapping路径，到src/page各个路由vue文件的axios请求即可。
 
@@ -33,11 +33,11 @@ devServer: {//代理服务器
 
 3.<u>*npm run serve*</u> 在vscode运行，数据交互需要启动后端项目。
 
-<img src="C:\Users\DELL\AppData\Roaming\Typora\typora-user-images\image-20220823094903995.png" alt="image-20220823094903995" style="zoom: 33%;" />
+<img src="static\image-20220823094903995.png" alt="image-20220823094903995" style="zoom: 33%;" />
 
 4.<u>*npm run build*</u> 项目打包成dist文件夹。
 
-![image-20220823100235799](C:\Users\DELL\AppData\Roaming\Typora\typora-user-images\image-20220823100235799.png)
+![image-20220823100235799](static\image-20220823100235799.png)
 
 
 
@@ -59,7 +59,7 @@ spring:
 
 
 
-<img src="C:\Users\DELL\AppData\Roaming\Typora\typora-user-images\image-20220823103208674.png" alt="image-20220823103208674" style="zoom: 33%;" />
+<img src="static\image-20220823103208674.png" alt="image-20220823103208674" style="zoom: 33%;" />
 
 **linux部署：**
 
@@ -71,7 +71,7 @@ systemctl status firewalld #查看防火墙状态
 
 ```
 
-![](D:\桌面\屏幕截图 2022-08-23 103756.jpg)
+![](static\屏幕截图 2022-08-23 103756.jpg)
 
 2.navicat远程连接linux中的mysql,建库建表，记得更新一下后端数据库配置。后端如果要建在windows比较简单，后面注意nginx地址配置就行。
 
@@ -79,11 +79,11 @@ systemctl status firewalld #查看防火墙状态
 
 4.将dist文件夹放到linux中，我放在了nginx文件夹下，后面文件配置路径对应就行
 
-![image-20220823112932792](C:\Users\DELL\AppData\Roaming\Typora\typora-user-images\image-20220823112932792.png)
+![image-20220823112932792](static\image-20220823112932792.png)
 
 5.<u>nginx/conf</u>  更改nginx.conf文件。
 
-![](C:\Users\DELL\AppData\Roaming\Typora\typora-user-images\image-20220823133216354.png)
+![](static\image-20220823133216354.png)
 
 ```c
 		#nginx 监视的端口号，也就是访问前端的端口号，随意设置
@@ -115,8 +115,8 @@ systemctl status firewalld #查看防火墙状态
 
 7.浏览器查看结果，从外面访问虚拟机地址
 
-<img src="C:\Users\DELL\AppData\Roaming\Typora\typora-user-images\image-20220823115949453.png" alt="image-20220823115949453" style="zoom:50%;" />
+<img src="static\image-20220823115949453.png" alt="image-20220823115949453" style="zoom:50%;" />
 
-<img src="C:\Users\DELL\AppData\Roaming\Typora\typora-user-images\image-20220823134106224.png" alt="image-20220823134106224" style="zoom:50%;" />
+<img src="static\image-20220823134106224.png" alt="image-20220823134106224" style="zoom:50%;" />
 
 **不足：** 无表单验证，没有超时处理，如果后端访问不到没有反馈。

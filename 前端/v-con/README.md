@@ -2,7 +2,7 @@
 
 本项目用vue3，vue-cli5开发。
 
-![1](C:\Users\DELL\AppData\Roaming\Typora\typora-user-images\image-20220822231604185.png)
+![1](image-20220822231604185.png)
 
 **dist:** <u>npm run build</u> 对vue项目进行打包后的文件，用于项目部署。
 
