@@ -34,7 +34,7 @@ export const constantRoutes = [
 
 ]
 export const router = createRouter({
-    history: createWebHashHistory(), //hish模式
+    history: createWebHistory(), //history模式
     routes: constantRoutes, //上面的变量
 
 })

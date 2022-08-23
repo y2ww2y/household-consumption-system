@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 @SpringBootApplication
 @MapperScan("com.y2w.demo.mapper")
-@CrossOrigin
+@CrossOrigin  //跨域注解
 @EnableTransactionManagement
 public class DemoApplication {
 

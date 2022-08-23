@@ -69,7 +69,7 @@
       <!-- 最下面 -->
       <el-footer height="5%"
         ><span id="help"
-          ><a :href="address" target="_blank">github地址</a
+          ><a :href="address" target="_blank">gitee地址</a
           ></span
         ></el-footer
       >
@@ -103,7 +103,7 @@ const userList = ref([]);  //用户信息列表
 const userNameList = ref([]);//用户姓名表
 const adminName = ref("");//管理姓名
 const selectUserList = ref([]);//选择姓名表 
-const address=ref("http://www.baidu.com")
+const address=ref("https://gitee.com/y2w/household-consumption-system.git")
 
 /** 
  之前做的用于侧边框的路由跳转，后面发现<el-menu>有现成的属性:router="true",设置index就行
@@ -117,6 +117,8 @@ const address=ref("http://www.baidu.com")
 *  router.push("/user/list");
 *}
 */
+
+//之前做的验证登录
 // onBeforeMount(() => {
 //   if (!sessionStorage.getItem("login")) {
 //     router.push("/");
@@ -124,11 +126,11 @@ const address=ref("http://www.baidu.com")
 // });
 
 onMounted(() => {
-  // 发现进来后登录页面的图还在，就搜了一个解决方法，在路径后面会有一个#reloaded,不影响运行
-  if (window.location.href.indexOf("#reloaded") == -1) {
-    window.location.href = window.location.href + "#reloaded";
-    window.location.reload();
-  }
+  // 发现进来后登录页面的图还在，就搜了一个解决方法，在路径后面会有一个#reloaded,不影响运行，验证登录改成路由守卫后没有这种问题了
+  // if (window.location.href.indexOf("#reloaded") == -1) {
+  //   window.location.href = window.location.href + "#reloaded";
+  //   window.location.reload();
+  // }
   activeIndex.value = router.currentRoute.value.path;//动态获取当前相对路径，给侧边框提供默认选中框，不然在原本页面下刷新会丢失高亮选中
   selectUser();//挂载前执行一次，获取一些数据
 });
