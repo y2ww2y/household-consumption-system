@@ -106,7 +106,7 @@ systemctl status firewalld #查看防火墙状态
         location /api/ {   
             #重写路径,/api转成/
 	        rewrite ^/api/(.*)$ /$1 break;
-            #代理服务器，后面跟后端的war包名，一定加/
+            #代理服务器，后面跟后端对应地址，一定加/
         	proxy_pass http://localhost:8082/; 
         }
 ```
